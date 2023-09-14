@@ -1,11 +1,10 @@
 # Polkadot & Rise In Bootcamp - Final Project
 
-Hello, welcome to the repo of the **EnCrypto Application** that I developed on the Polkadot network with Rust language.
+Hello, welcome to the repo of the **Flipper Application** that I developed on the Polkadot network with Rust language.
 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Features](#features)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -13,16 +12,11 @@ Hello, welcome to the repo of the **EnCrypto Application** that I developed on t
 - [Simulating a Substrate Network](#simulating-a-substrate-network)
 - [Adding Trusted Nodes To a Network](#adding-trusted-nodes-to-a-network)
 - [Smart Contracts](#smart-contracts)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Overview
 
-The features is updating..
-
-## Features
-
-The features is updating..
+The overview is updating..
 
 ## Getting Started
 
@@ -366,28 +360,57 @@ After both nodes have added their keys to their respective keystores `located un
 
 ## Smart Contracts
 
-The content is updating..
+1. Environment setup
+Check whether the `rustc compiler` is installed, 
+if not, install it with the 3 commands below.
 
-## Testing
+```bash
+rustup target add wasm32-unknown-unknown --toolchain nightly
+```
 
-The content is updating..
+Add rust-src compiler component
+```bash
+rustup component add rust-src
+```
+Install the latest version of cargo-contract
+```bash
+cargo install --force --locked cargo-contract --version 2.0.0-rc
+```
+Verify the installation and explore the commands available
+```bash
+cargo contract --help
+```
 
-## Frontend
+2. Creating a Smart Contract
 
-The content is updating..
+Specify a directory and create a new project with the `cargo contract new flipper` command
+Test it with `cargo test`
+Build it the contract with `cargo contract build`
 
-- **React.js**: Powers the DApp's user interface.
+3. Deploy the Smart Contract
 
-## Contributing
+Run `substrate-contracts-node`
+Run `./substrate-contracts-node --log info,runtime::contracts=debug 2>&1`
 
-Contributions to this project are welcome! To contribute:
+Go to the flipper project folder and build the contract using cargo contract build
 
-1. Fork the repository.
-2. Create a new branch for your feature/bug fix.
-3. Make changes and test thoroughly.
-4. Commit with clear and concise messages.
-5. Push changes to your fork.
-6. Submit a pull request describing your changes.
+
+```bash
+cargo contract instantiate --constructor new --args "false" --suri //Alice --salt $(date +%s)
+```
+
+
+
+4. Interact with the Smart Contract
+
+```bash
+cargo contract call --contract 5HciRHsxpEWfJLGXwe4CHNEpyveJ9T4BtS5TKvJBMUfztrtu --message get --suri //Alice --dry-run
+```
+
+For the flip function in the smart contract
+```bash
+cargo contract call --contract 5HciRHsxpEWfJLGXwe4CHNEpyveJ9T4BtS5TKvJBMUfztrtu --message flip --suri //Alice
+```
 
 ## License
 
