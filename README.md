@@ -185,9 +185,6 @@ This time we join the node using the Bob account.
 If you see the same blocks in the terminal window as in the image below, it means everything is going right.
 You can even see the expression showing that two nodes match each other in the peer section.
 
-![Running Blockchain](https://hizliresim.com/kjqqts4)
-![Running Blockchain 2](https://hizliresim.com/t3j15ep)
-
 ## Adding Trusted Nodes To a Network
 We will create a complete permissioned blockchain network.
 
